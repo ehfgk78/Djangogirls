@@ -5,14 +5,16 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--정적 파일을 참조하는 템플릿 static태그 (STATICFILES_DIR의 path 를 기준으로 상대경로 설정함 -->
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
     <title>Document</title>
 </head>
 <body>
   <h1>Post List</h1>
 
   {% for post in posts %}
-  <div> {{ post.title }}  </div>
-  <div> {{ post.content | truncatewords:10 }} </div>
+  <h3> {{ post.title }}  </h3>
+  <div> {{ post.content| linebreakbr | truncatewords:10}} </div>
   {% endfor %}
 
 </body>
