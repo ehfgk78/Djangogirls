@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="ko">
 <head>
@@ -7,15 +8,23 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!--정적 파일을 참조하는 템플릿 static태그 (STATICFILES_DIR의 path 를 기준으로 상대경로 설정함 -->
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
     <title>Document</title>
 </head>
 <body>
-  <h1>Post List</h1>
+<div class="container">
+    <h2 class="blog-title"><a href=""> Post List</a></h2>
 
-  {% for post in posts %}
-  <h3> {{ post.title }}  </h3>
-  <div> {{ post.content| linebreakbr | truncatewords:10}} </div>
-  {% endfor %}
+    {% for post in posts %}
+    <div class="post">
+        <h4 class="post-title"> {{ post.title }} </h4>
+        <p class="content">{{ post.content| linebreaksbr | truncatewords:30}}</p>
+        <p class="right-text"><strong>Date: </strong>{{ post.created_date}}</p>
+        <p class="right-text"><strong>Author: </strong>{{ post.author.username}}</p>
+    </div>
+    <hr>
+    {% endfor %}
+</div>
 
 </body>
 </html>
