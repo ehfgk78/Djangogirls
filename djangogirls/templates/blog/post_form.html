@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+<!--제목-->
+<!--내용-->
+<!--글쓰기버튼-->
+
+<!--View: def post_add(request)-->
+<!--Template: post/add/ 에 연결-->
+
+
+{% block content %}
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">알림</h4>
+            </div>
+            <div class="modal-body">
+                <p>제목과 내용을 작성하여 주세요.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div>
+    <h3>글 작성</h3>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="input-title">제목</label>
+
+            <input name='title' id="input-title" type="text" class="form-control"
+                   placeholder="제목을 입력해주세요.  ex) 홍길동의 출현">
+        </div>
+        <div class="form-group">
+            <label for="input-content">내용</label>
+            <textarea name="content" id="input-content" cols="30" rows="10" class="form-control"></textarea>
+        </div>
+        <div class="checkbox has-error input-lg">
+            <label> <input name="publish" type="checkbox"> 게시하겠습니까? </label>
+        </div>
+        <button class="btn btn-primary btn-block">게시글 보기</button>
+    </form>
+</div>
+
+<script>
+$(document).ready(function(){
+  $("#myModal").modal();
+});
+
+</script>
+
+{% endblock %}
